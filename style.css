@@ -1,0 +1,601 @@
+@import url("https://fonts.googleapis.com/css?family=DM+Sans:400,500|Jost:400,500,600&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap");
+
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  color: #2b2c48;
+  font-family: "Jost", sans-serif;
+  background-image: url("bakground.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  /* transition: background-image 1s ease-in-out; */
+  padding: 20px;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.intro {
+  padding-top: 20rem;
+  position: absolute;
+  top: 0rem;
+  left: 0rem;
+  bottom: 0rem;
+  font-family: "Roboto Mono", monospace;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  margin: 0;
+  background-color: black;
+  background-size: cover;
+  background-position: center;
+  color: #a6a6a6;
+  transform: translateY(0px);
+  transition: opacity 1s, transform 1s;
+}
+
+a {
+  text-decoration:none;
+}
+.intro h1 {
+  color: white;
+  font-size: 190%;
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: 0.1em solid #a6a6a6; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: 0.15em;
+  animation: typing 3.5s steps(10, end) forwards,
+    blink-caret 0.75s step-end infinite;
+}
+@media (min-width: 1170px) {
+  /* The typing effect */
+  @keyframes typing {
+    from {
+      width: 0;
+    }
+    to {
+      width: 48%;
+    }
+  }
+}
+@media (max-width: 1169.99px) {
+  /* The typing effect */
+  @keyframes typing {
+    from {
+      width: 0;
+    }
+    to {
+      width: 67%;
+    }
+  }
+}
+@media (max-width: 969.99px) {
+  /* The typing effect */
+  @keyframes typing {
+    from {
+      width: 0;
+    }
+    to {
+      width: 55%;
+    }
+  }
+}
+@media (max-width: 769.99px) {
+  /* The typing effect */
+  @keyframes typing {
+    from {
+      width: 0;
+    }
+    to {
+      width: 70%;
+    }
+  }
+}
+@media (max-width: 469.99px) {
+  .intro h1 {
+    letter-spacing: 80%;
+    font-size: 150%;
+  }
+  /* The typing effect */
+  @keyframes typing {
+    from {
+      width: 0;
+    }
+    to {
+      width: 85%;
+    }
+  }
+}
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from {
+    border-color: transparent;
+  }
+  to {
+    border-color: transparent;
+    opacity: 0;
+  }
+  50% {
+    border-color: white;
+  }
+}
+
+.card {
+  max-width: 1000px;
+  margin: auto;
+  overflow-y: auto;
+  position: relative;
+  z-index: 1;
+  overflow-x: hidden;
+  background-color: #d5fefd;
+  background-image: linear-gradient(315deg, #d5fefd 0%, #fffcff 74%);
+  display: flex;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  flex-direction: column;
+  border-radius: 10px;
+  box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.2);
+
+}
+
+.card[data-state="#about"] {
+  height: 550px;
+  width: 550px;
+  text-align: justify;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+.card[data-state="#about"] .card-main {
+  padding-top: 20px;
+}
+
+.card[data-state="#contact"] {
+  height: 430px;
+  width: 550px;
+}
+
+.card[data-state="#education"] {
+  height: 600px;
+  width: 550px;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+.card.is-active .card-header {
+  height: 80px;
+}
+.card.is-active .card-cover {
+  height: 100px;
+  top: -50px;
+}
+.card.is-active .card-avatar {
+  transform: none;
+  top: 20px;
+  left: 20px;
+  width: 70px;
+  height: 70px;
+  bottom: 10px;
+}
+.card.is-active .card-fullname,
+.card.is-active .card-jobtitle {
+  left: 96px;
+  transform: none;
+}
+.card.is-active .card-fullname {
+  top: 15px;
+  bottom: 10px;
+  font-size: 30px;
+}
+.card.is-active .card-jobtitle {
+  left: 98px;
+  top: 70px;
+  bottom: 10px;
+  letter-spacing: 1px;
+  font-size: 10px;
+}
+
+.card-header {
+  position: relative;
+  display: flex;
+  height: 200px;
+  flex-shrink: 0;
+  width: 100%;
+  transition: 0.3s;
+}
+.card-header * {
+  transition: 0.3s;
+}
+
+.card-cover {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  height: 160px;
+  top: -20%;
+  left: 0;
+  will-change: top;
+  background-size: cover;
+  background-position: center;
+  filter: blur(30px);
+  transform: scale(1.2);
+  transition: 0.5s;
+}
+
+.card-avatar {
+  width: 100px;
+  height: 100px;
+  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+  -o-object-position: center;
+  object-position: center;
+  -o-object-fit: cover;
+  object-fit: cover;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%) translateY(-64px);
+}
+
+.card-fullname {
+  position: absolute;
+  bottom: 0;
+  font-size: 28px;
+  font-weight: 700;
+  text-align: center;
+  white-space: nowrap;
+  transform: translateY(-10px) translateX(-50%);
+  left: 50%;
+}
+
+.card-jobtitle {
+  position: absolute;
+  bottom: 0;
+  font-size: 15px;
+  white-space: nowrap;
+  font-weight: 500;
+  opacity: 0.7;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin: 0;
+  left: 50%;
+  transform: translateX(-50%) translateY(-7px);
+}
+
+.card-main {
+  position: relative;
+  flex: 1;
+  display: flex;
+  padding-top: 10px;
+  flex-direction: column;
+}
+
+.card-subtitle {
+  font-weight: 700;
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+
+.card-content {
+  padding: 20px;
+}
+
+.card-desc {
+  line-height: 1.6;
+  color: #636b6f;
+  font-size: 14px;
+  margin: 0;
+  font-weight: 400;
+  font-family: "DM Sans", sans-serif;
+}
+
+.card-social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+  margin-bottom: 30px;
+}
+.card-social img {
+  fill: #a5b5ce;
+  width: 16px;
+  display: block;
+  transition: 0.3s;
+}
+.card-social a {
+  color: #8797a1;
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s;
+  background-color: rgba(93, 133, 193, 0.05);
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.card-social a:hover:nth-child(1) {
+  background-color: #7777ad8f;
+}
+
+.card-social a:hover:nth-child(2) {
+  background-color: #7abaf1;
+}
+
+.card-social a:hover:nth-child(3) {
+  background-color: #d48b5d7d;
+}
+
+.card-social a:hover:nth-child(4) {
+  background-color: #33a7d17d;
+}
+
+.card-social a:last-child {
+  margin-right: 0;
+}
+
+.card-buttons {
+  display: flex;
+  background-color: #d9e4f5;
+  background-image: linear-gradient(315deg, #d9e4f5 0%, #f5e3e6 74%);
+  margin-top: auto;
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  border-radius: 15px;
+}
+.card-buttons button {
+  flex: 1 1 auto;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background: 0;
+  font-size: 13px;
+  border: 0;
+  padding: 15px 5px;
+  cursor: pointer;
+  color: #5c5c6d;
+  transition: 0.3s;
+  font-family: "Jost", sans-serif;
+  font-weight: 500;
+  outline: 0;
+  border-bottom: 3px solid transparent;
+}
+.card-buttons button.is-active,
+.card-buttons button:hover {
+  z-index: 1;
+  border-radius: 10px;
+  color: #2b2c48;
+  border-bottom: 3px solid #8f8cd5;
+  background-color: #fde7f9;
+  background-image: linear-gradient(315deg, #fde7f9 0%, #aacaef 74%);  
+}
+
+.card-section {
+  display: none;
+}
+.card-section.is-active {
+  display: block;
+  -webkit-animation: fadeIn 0.6s both;
+  animation: fadeIn 0.6s both;
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translatey(40px);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translatey(40px);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.card-timeline {
+  margin-top: 30px;
+  position: relative;
+}
+.card-timeline:after {
+  background: linear-gradient(to top, rgba(134, 214, 243, 0) 0%, #516acc 100%);
+  content: "";
+  left: 42px;
+  width: 2px;
+  top: 0;
+  height: 100%;
+  position: absolute;
+  content: "";
+}
+
+.card-item {
+  position: relative;
+  padding-left: 60px;
+  padding-right: 20px;
+  padding-bottom: 30px;
+  z-index: 1;
+}
+.card-item:last-child {
+  padding-bottom: 5px;
+}
+.card-item:after {
+  content: attr(data-year);
+  width: 10px;
+  position: absolute;
+  top: 0;
+  left: 37px;
+  width: 8px;
+  height: 8px;
+  line-height: 0.6;
+  border: 2px solid #fff;
+  font-size: 11px;
+  text-indent: -35px;
+  border-radius: 50%;
+  color: rgba(134, 134, 134, 0.7);
+  background: linear-gradient(to bottom, #a0aee3 0%, #516acc 100%);
+}
+
+.card-item-title {
+  font-weight: 500;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.card-item-desc {
+  font-size: 13px;
+  color: #6f6f7b;
+  line-height: 1.5;
+  font-family: "DM Sans", sans-serif;
+}
+
+.card-contact-wrapper {
+  margin-top: 20px;
+}
+
+.card-contact {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  color: #6f6f7b;
+  font-family: "DM Sans", sans-serif;
+  line-height: 1.6;
+  cursor: pointer;
+}
+.card-contact + .card-contact {
+  margin-top: 16px;
+}
+.card-contact svg {
+  flex-shrink: 0;
+  width: 30px;
+  min-height: 34px;
+  margin-right: 12px;
+  transition: 0.3s;
+  padding-right: 12px;
+  border-right: 1px solid #dfe2ec;
+}
+
+.contact-me {
+  border: 0;
+  outline: none;
+  background: linear-gradient(
+    to right,
+    rgba(83, 200, 239, 0.8) 0%,
+    rgba(81, 106, 204, 0.8) 96%
+  );
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+  color: #fff;
+  padding: 12px 16px;
+  width: 100%;
+  border-radius: 5px;
+  margin-top: 25px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: "Jost", sans-serif;
+  transition: 0.3s;
+}
+
+
+@media (max-width: 767.99px) {
+  body {
+    padding: 10px; /* Add padding for better spacing on mobile */
+    opacity: 1;
+    transform: translateY(0);
+    width: 100%;
+    height: 100%;
+  }
+
+  .intro {
+    padding-top: 25rem; /* Adjust padding for intro on smaller screens */
+    transform: translateY(0px);
+    transition: opacity 1s, transform 2s;
+    background-color: #2b2c48;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .intro h1 {
+    font-size: 120%; /* Reduce font size for better readability on mobile */
+  }
+
+  /* Adjust other styles for better mobile presentation */
+
+  .card {
+    width: 100%; /* Make the card take full width on mobile */
+    height: 700px;
+    margin-top: 200px; /* Add some spacing between cards */
+    box-shadow:#2b2c48; /* Remove box shadow for cards on mobile */
+    border-radius: 15px;
+    padding: 10px;
+    font-size: medium;
+  }
+
+  .card-main {
+    padding-top: 10px; /* Reduce top padding on main content */
+  }
+
+  .card-fullname {
+    font-size: 30px; /* Adjust font size for full name on mobile */
+  }
+
+  .card-jobtitle {
+    font-size: 11px; /* Adjust font size for job title on mobile */
+  }
+
+  .card-content {
+    padding: 10px; /* Adjust content padding for mobile */
+  }
+
+  .card-desc{
+    font-size: 15px;
+  }
+
+  .card-contact-wrapper {
+    margin-top: 15px; /* Adjust margin for contact section */
+  }
+
+  .card-subtitle{
+    font-size: 18px;
+    margin-top: 20px;
+  }
+
+  .card-section{
+    /* max-width: fit-content; */
+    max-height: fit-content;
+
+  }
+
+  .card-contact{
+    font-size: 15px;;
+  }
+
+  .contact-me {
+    padding: 10px 14px; /* Adjust button padding for mobile */
+    font-size: 15px; /* Adjust button font size for mobile */
+  }
+
+  /* Add any other mobile-specific styles here */
+}
+
+
